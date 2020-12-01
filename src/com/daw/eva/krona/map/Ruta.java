@@ -297,7 +297,7 @@ public class Ruta {
 		
 		
 		for(Ruta_Dades rutaTmp : comprovacioRendimentTmp.llistaRutes) {
-			unio.addAll(rutaTmp.getWaypoints());
+			unio.addAll(rutaTmp.getWaypoints()); //No es repeteixen
 		}
 		
 		System.out.println("ID dels waypoints ficats en el set: " + unio);
@@ -393,7 +393,7 @@ public class Ruta {
 				
 				if (!existeixenErrors) {
 					rutaTmp = st.nextToken();
-					if (Cadena.stringIsInt(rutaTmp)) {
+				 	if (Cadena.stringIsInt(rutaTmp)) {
 						rutaB = Integer.parseInt(rutaTmp);
 					} else {
 						System.out.println("ERROR: has introduit " + rutaTmp + " com a ruta. Els ID de les rutes són integers.");
@@ -648,7 +648,7 @@ public class Ruta {
 	public static void ordenarRutesMapPerID(ComprovacioRendiment comprovacioRendimentTmp) {
 		SortedMap<Integer, Ruta_Dades> mapaTreeRutes = new TreeMap<Integer, Ruta_Dades>();
 		// Si es declara de tipus TreeMap, a llavors la comanda "mapaTreeRutes.entrySet()" del "for-each" no és acceptada.
-		// Per defecte ordena per la clau.
+		// Per defecte ordena per la clau. ordre natural, ascendent
 		
 		mapaTreeRutes.putAll(comprovacioRendimentTmp.mapaLinkedDeRutes);
 				
@@ -670,6 +670,9 @@ public class Ruta {
 		SortedMap<Integer, Ruta_Dades> mapaTreeRutes;
 		
 		mapaTreeRutes = new TreeMap(new comparadorPerWaypointAndID(comprovacioRendimentTmp.mapaLinkedDeRutes));
+		
+		//mapaTreeRutes = new TreeMap();
+
 		
 		mapaTreeRutes.putAll(comprovacioRendimentTmp.mapaLinkedDeRutes);
 		

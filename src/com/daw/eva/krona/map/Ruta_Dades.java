@@ -78,7 +78,8 @@ public class Ruta_Dades implements Comparable<Ruta_Dades>{
 		if (this.getWaypoints().equals(o.getWaypoints())) {
 			return 0;
 		} else {
-			return o.getId() - this.getId();
+			return o.getId() - this.getId();   //ordena de manera decreixent
+			//return this.getId() - o.getId();   //ordena de manera decreixent
 		}
 	}
     
