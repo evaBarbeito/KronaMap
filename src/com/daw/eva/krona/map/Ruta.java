@@ -261,7 +261,7 @@ public class Ruta {
 		Ruta_Dades ruta_1;
 		Ruta_Dades ruta_2;
 		Ruta_Dades ruta_3;
-		Ruta_Dades ruta_4;
+		Ruta_Dades ruta_4, ruta_5, ruta_6;
 		
 		
 		ruta_0 = new Ruta_Dades(0, "ruta 0: Terra --> Punt Lagrange Júpiter-Europa", new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5)), true, LocalDateTime.parse("28-10-2020 16:30", Data.formatter), null, LocalDateTime.parse("28-10-2020 16:30", Data.formatter));
@@ -270,11 +270,16 @@ public class Ruta {
 		ruta_3 = new Ruta_Dades(3, "ruta 3: Terra --> Mart (directe) --> Òrbita de Júpiter ", new ArrayList<Integer>(Arrays.asList(0, 3, 4)), true, LocalDateTime.parse("28-10-2020 16:33", Data.formatter), null, LocalDateTime.parse("28-10-2020 16:33", Data.formatter));
 		ruta_4 = new Ruta_Dades(4, "ruta 2.2: Terra --> Òrbita de Venus (REPETIDA)", new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7)), true, LocalDateTime.parse("28-10-2020 16:32", Data.formatter), null, LocalDateTime.parse("30-10-2020 19:49", Data.formatter));
 		
+		ruta_5 = new Ruta_Dades(6, "ruta 6: 2.3: Terra --> Òrbita de Venus (REPE3) ", new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7)), true, LocalDateTime.parse("28-10-2020 16:32", Data.formatter), null, LocalDateTime.parse("30-10-2020 19:49", Data.formatter));
+		ruta_6 = new Ruta_Dades(5, "ruta 5: Terra --> Òrbita de Eva ", new ArrayList<Integer>(Arrays.asList(0,5,7)), true, LocalDateTime.parse("28-10-2020 16:32", Data.formatter), null, LocalDateTime.parse("30-10-2020 19:49", Data.formatter));
+		
 		comprovacioRendimentTmp.llistaRutes.add(ruta_0);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_1);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_2);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_3);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_4);
+		comprovacioRendimentTmp.llistaRutes.add(ruta_5);
+		comprovacioRendimentTmp.llistaRutes.add(ruta_6);
 		
 		System.out.println("Insertades les rutes:");
 		for(Ruta_Dades rutaTmp : comprovacioRendimentTmp.llistaRutes) {
@@ -445,6 +450,9 @@ public class Ruta {
 	}
 	
 	
+	// RECORDAR QUE EN UN SET NO HI PODEN HAVER 2 OBJECTES IGUALS, EL 1r ENTRARÀ PERÒ EL 2n NO.
+	// RECORDAR QUE EN UN MAP NO HI PODEN HAVER 2 OBJECTES IGUALS, EL 1r ENTRARÀ I EL 2n MACHACARÀ (SOBREESCRIURÀ) AL 1r.
+		
 	
 	// Volem crear un map on ficarem totes les rutes creades en el menú 20. S'ha d'executar el menú 20 abans.
 	// Poden existir rutes amb les mateixes dades (menys el ID, es clar).
@@ -480,35 +488,35 @@ public class Ruta {
         tempsFinal = System.nanoTime();
         temps1aForma = (int)((tempsFinal - tempsInicial)/1000);
         
-        // 2a forma de visualitzar el contingut del map.
-        // Fem un iterador que navegui per les claus del mapa. Es crea un set on el seu contingut són les claus del map.
-		tempsInicial = System.nanoTime();
-        System.out.println();
-        System.out.println("2a forma de visualitzar el contingut del map (iterator de les claus del map):");
-        Iterator<Integer> it2 = mapaLinkedDeRutes.keySet().iterator();
-        while (it2.hasNext()) {
-            clauDelMap = it2.next();
-            System.out.println(clauDelMap + ": " + mapaLinkedDeRutes.get(clauDelMap));
-        }
-        tempsFinal = System.nanoTime();
-        temps2aForma = (int)((tempsFinal - tempsInicial)/1000);
-        
-        // 3a forma de visualitzar el contingut del map.
-        // Lo mateix que la forma 1 però fent servir un bucle for en comptes d'un iterator.
-        tempsInicial = System.nanoTime();
-        System.out.println();
-        System.out.println("3a forma de visualitzar el contingut del map (for-each del map --> set):");
-        for (Entry<Integer, Ruta_Dades> dada : mapaLinkedDeRutes.entrySet()) {
-            System.out.println(dada.getKey() + ": " + dada.getValue().toString());
-        }
-        tempsFinal = System.nanoTime();
-        temps3aForma = (int)((tempsFinal - tempsInicial)/1000);
-		
+//        // 2a forma de visualitzar el contingut del map.
+//        // Fem un iterador que navegui per les claus del mapa. Es crea un set on el seu contingut són les claus del map.
+//		tempsInicial = System.nanoTime();
+//        System.out.println();
+//        System.out.println("2a forma de visualitzar el contingut del map (iterator de les claus del map):");
+//        Iterator<Integer> it2 = mapaLinkedDeRutes.keySet().iterator();
+//        while (it2.hasNext()) {
+//            clauDelMap = it2.next();
+//            System.out.println(clauDelMap + ": " + mapaLinkedDeRutes.get(clauDelMap));
+//        }
+//        tempsFinal = System.nanoTime();
+//        temps2aForma = (int)((tempsFinal - tempsInicial)/1000);
+//        
+//        // 3a forma de visualitzar el contingut del map.
+//        // Lo mateix que la forma 1 però fent servir un bucle for en comptes d'un iterator.
+//        tempsInicial = System.nanoTime();
+//        System.out.println();
+//        System.out.println("3a forma de visualitzar el contingut del map (for-each del map --> set):");
+//        for (Entry<Integer, Ruta_Dades> dada : mapaLinkedDeRutes.entrySet()) {
+//            System.out.println(dada.getKey() + ": " + dada.getValue().toString());
+//        }
+//        tempsFinal = System.nanoTime();
+//        temps3aForma = (int)((tempsFinal - tempsInicial)/1000);
+//		
         System.out.println();
         System.out.println("TEMPS PER 1a FORMA (map --> set + iterador del set): " + temps1aForma);
-        System.out.println("TEMPS PER 2a FORMA (iterator de les claus del map): " + temps2aForma);
-        System.out.println("TEMPS PER 3a FORMA (for-each del map --> set): " + temps3aForma);
-		
+//        System.out.println("TEMPS PER 2a FORMA (iterator de les claus del map): " + temps2aForma);
+//        System.out.println("TEMPS PER 3a FORMA (for-each del map --> set): " + temps3aForma);
+//		
         
         comprovacioRendimentTmp.mapaLinkedDeRutes.putAll(mapaLinkedDeRutes);
         // No fem un return de comprovacioRendimentTmp perquè en realitat quan el rebem per paràmetre, estem rebent un apuntador i no
@@ -648,7 +656,7 @@ public class Ruta {
 	public static void ordenarRutesMapPerID(ComprovacioRendiment comprovacioRendimentTmp) {
 		SortedMap<Integer, Ruta_Dades> mapaTreeRutes = new TreeMap<Integer, Ruta_Dades>();
 		// Si es declara de tipus TreeMap, a llavors la comanda "mapaTreeRutes.entrySet()" del "for-each" no és acceptada.
-		// Per defecte ordena per la clau. ordre natural, ascendent
+		// Per defecte ordena per la clau. ordre natural, ascendent, el Id de ruta_dades
 		
 		mapaTreeRutes.putAll(comprovacioRendimentTmp.mapaLinkedDeRutes);
 				
@@ -659,6 +667,9 @@ public class Ruta {
 	}
 	
 	
+	// RECORDAR QUE EN UN SET NO HI PODEN HAVER 2 OBJECTES IGUALS, EL 1r ENTRARÀ PERÒ EL 2n NO.
+	// RECORDAR QUE EN UN MAP NO HI PODEN HAVER 2 OBJECTES IGUALS, EL 1r ENTRARÀ I EL 2n i consecutius iguals (SOBREESCRIURÀ) AL 1r.
+	// recorre de 0 a 6, matxaca rutes 2 i 4 	, per això la ruta id=2, surt ruta 6 , en qualsevol ordre de presentació que establim al compareTo 
 	
 	//35. Ordenar les rutes del MAP per waypoints i ID (el ID de més gran a més petit)
 	// Per defecte ordena per la clau. Ara volem que ordeni pel valor, per això farà servir
