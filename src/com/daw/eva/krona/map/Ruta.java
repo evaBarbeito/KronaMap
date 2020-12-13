@@ -261,7 +261,7 @@ public class Ruta {
 		Ruta_Dades ruta_1;
 		Ruta_Dades ruta_2;
 		Ruta_Dades ruta_3;
-		Ruta_Dades ruta_4, ruta_5, ruta_6;
+		Ruta_Dades ruta_4, ruta_5, ruta_6, ruta_7;
 		
 		
 		ruta_0 = new Ruta_Dades(0, "ruta 0: Terra --> Punt Lagrange Júpiter-Europa", new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5)), true, LocalDateTime.parse("28-10-2020 16:30", Data.formatter), null, LocalDateTime.parse("28-10-2020 16:30", Data.formatter));
@@ -272,6 +272,7 @@ public class Ruta {
 		
 		ruta_5 = new Ruta_Dades(6, "ruta 6: 2.3: Terra --> Òrbita de Venus (REPE3) ", new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7)), true, LocalDateTime.parse("28-10-2020 16:32", Data.formatter), null, LocalDateTime.parse("30-10-2020 19:49", Data.formatter));
 		ruta_6 = new Ruta_Dades(5, "ruta 5: Terra --> Òrbita de Eva ", new ArrayList<Integer>(Arrays.asList(0,5,7)), true, LocalDateTime.parse("28-10-2020 16:32", Data.formatter), null, LocalDateTime.parse("30-10-2020 19:49", Data.formatter));
+		ruta_7 = new Ruta_Dades(5, "ruta 5: Terra --> Òrbita de Eva ", new ArrayList<Integer>(Arrays.asList(0,5,7)), true, LocalDateTime.parse("28-10-2020 16:32", Data.formatter), null, LocalDateTime.parse("30-10-2020 19:49", Data.formatter));
 		
 		comprovacioRendimentTmp.llistaRutes.add(ruta_0);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_1);
@@ -280,6 +281,7 @@ public class Ruta {
 		comprovacioRendimentTmp.llistaRutes.add(ruta_4);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_5);
 		comprovacioRendimentTmp.llistaRutes.add(ruta_6);
+		comprovacioRendimentTmp.llistaRutes.add(ruta_7);
 		
 		System.out.println("Insertades les rutes:");
 		for(Ruta_Dades rutaTmp : comprovacioRendimentTmp.llistaRutes) {
@@ -611,7 +613,7 @@ public class Ruta {
            
            rutaTmp = (Ruta_Dades)me.getValue();
            
-           if (rutaTmp.getWaypoints().contains(waypointABuscar)) {
+           if (rutaTmp.getWaypoints().contains(waypointABuscar)) {   //only one....
         	   System.out.println(rutaTmp);   
         	   it1.remove(); 
            }
